@@ -1,0 +1,78 @@
+div.atacar_container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+   
+}
+
+.img-hero-local, .img-inimigo-local {
+    width: 25em;
+}
+
+.hero-local {
+    width: fit-content;
+
+}
+
+.inimigo {
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.level-inimigo {
+    font-size: 1.3em;
+    font-weight: 800;
+}
+
+.texto-vida {
+    font-size: 1.5em;
+    background-color: rgb(36, 36, 36);
+    width: fit-content;
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    margin: auto;
+}
+
+.vida-hero-local {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#meio-info {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.vez {
+    margin-bottom: 5em;
+}
+.texto {
+    font-size: 1.5em;
+    color: white; 
+    font-weight: 800;  
+}
+
+.golpe-fraco, .botao-golpe-fraco {
+    text-align: center;
+}
+
+.golpe-fraco, .abandonar-btn {
+    padding: 0.5em 1em;
+    font-size: 1.3em;
+    outline: 0;
+    border: 0;
+}
+
+.golpe-fraco:hover, .abandonar-btn:hover {
+    cursor: pointer;
+    outline: 2px solid black;
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Jogo</title>
+    <link rel="stylesheet" href="../style/form-newgame/style.css">
+    <link rel="stylesheet" href="../style/inicio/style.css">
+    <link rel="stylesheet" href="../style/home/style.css">
+    <link rel="stylesheet" href="../style/ataque/style.css">
+</head>
+<body>
+    <div class="container form-newgame">
+        
+            <div class="name-pers">
+                <label for="name">Nome: </label>
+                <input type="text" id="name" placeholder="digite seu nome" required>
+            </div>
+            
+            <section class="container-class">
+                <div class="classe-pers" id="classe-pers">
+                    <label for="classe-pers" class="title-class">Classes</label>
+                    <div class="class-item">
+                        <input type="radio" name="g-class" value="guerreiro" id="guerreiro" required onclick="trocar1('../imgs/personagens/guerreiro.png')" hidden>
+                        <label for="guerreiro">Guerreiro</label>
+                    </div>
+                    <div class="class-item">
+                        <input type="radio" name="g-class" value="arqueiro" id="arqueiro" required onclick="trocar1('../imgs/personagens/arqueiro.png')" hidden>
+                        <label for="arqueiro">Arqueiro</label>
+                    </div>
+                    <div class="class-item">
+                        <input type="radio" name="g-class" value="lenhador" id="lenhador" required onclick="trocar1('../imgs/personagens/lenhador.png')" hidden>
+                        <label for="lenhador">Lenhador</label>
+                    </div>
+                    <br>
+                    <label for="classe-pers" class="title-class">Atributos</label>
+                    <div class="classe-pers">
+                        <div class="class-item">
+                            <input type="radio" name="atributos-pers" value="coracao-extra" id="coracao" required hidden onclick="trocar2('../imgs/icones/coracao.png')">
+                            <label for="coracao">+1 Coração Extra</label>
+                        </div>
+
+                        <div class="class-item">
+                            <input type="radio" name="atributos-pers" value="sorte" id="sorte" required hidden onclick="trocar2('../imgs/icones/sorte.png')">
+                            <label for="sorte">Sorte</label>
+                        </div>
+
+                        <div class="class-item">
+                            <input type="radio" name="atributos-pers" value="acerto-critico" id="critico" required hidden onclick="trocar2('../imgs/icones/espada.png')">
+                            <label for="critico">+50% de acerto crítico</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="img-pers">
+                    <img id="displayedImage1" src="" alt="">
+                    <img id="displayedImage2" src="" alt="">
+                </div>
+            </section>
+
+            <button class="btn-enviar" id="btn-enviar" onclick="adicionar()">Começar</button>
+        
+
+        
+        </div>
+
+        <div class="container container_home home" style="display: none;">
+            <div class="info">
+                <div id="name-principal">
+                    <h3>Nome:</h3>
+                    <div class="nome-value">
+                        <!-- Nome adicionado no javascript -->
+                    </div>
+                </div>
+
+                <div class="painel">
+                    <div class="coins">
+                        <img src="../imgs/icones/coins.png" alt="" class="coins-img">
+                        <div id="quantidade-coins">
+                            0
+                            <!-- QUantidade de moedas-->
+                        </div>
+                        <!-- Adicionado as moedas -->
+                    </div>
+                    <div class="exp">
+                        <img src="../imgs/icones/estrela.png" alt="" class="exp-img">
+                        <div id="quantidade-exp">0</div>
+                        <!-- Adicionado as experiencias -->
+                    </div>
+                </div>
+            </div>
+
+            <main class="main-home">
+                <div class="img-hero">
+                    <div class="img-hero-relative">
+                        <img src="" alt="" id="atr-hero">
+                        <img src="" alt="" id="img-hero">
+                    </div>
+                    <div class="coracoes-hero">
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img pagina-1" id="cora-1">
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img pagina-1" id="cora-2">  
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img pagina-1" id="cora-3">
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img pagina-1" id="cora-4">
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img pagina-1" id="cora-5">
+                        
+                    </div>
+                </div>
+                
+                <div class="home-inventory">
+                    <div class="header-inventory">Inventário: </div> <br>
+                    <div class="card-inventory">
+                        <div class="card" id="01"></div>
+                        <div class="card" id="02"></div>
+                        <div class="card" id="03"></div>
+                        <div class="card" id="04"></div>
+                        <div class="card" id="05"></div>
+                        <div class="card" id="06"></div>
+                        <div class="card" id="07"></div>
+                        <div class="card" id="08"></div>
+                        <div class="card" id="09"></div>
+                        <div class="card" id="10"></div>
+                        <div class="card" id="11"></div>
+                        <div class="card" id="12"></div>
+                        <div class="card" id="13"></div>
+                        <div class="card" id="14"></div>
+                        <div class="card" id="15"></div>
+                        <div class="card" id="16"></div>
+                        <div class="card" id="17"></div>
+                        <div class="card" id="18"></div>
+                        <div class="card" id="19"></div>
+                        <div class="card" id="20"></div>
+                        <div class="card" id="21"></div>
+                        <div class="card" id="22"></div>
+                        <div class="card" id="23"></div>
+                        <div class="card" id="24"></div>
+                    </div>
+                </div>
+
+                <div class="btns-container">
+                    <div class="btn">
+                        <button onclick="atacar()" class="botao-atacar">Atacar</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="atacar_container container home" style="display: none;">
+            <div class="hero-local">
+                <img src="../imgs/personagens/guerreiro.png" alt="" class="img-hero-local">
+                <div class="vida-hero-local">
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img coracao-ataque" id="cora-1">
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img coracao-ataque" id="cora-2">  
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img coracao-ataque" id="cora-3">
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img coracao-ataque" id="cora-4">
+                        <img src="../imgs/icones/coracao.png" alt="" class="coracao-img coracao-ataque" id="cora-5">
+                </div>
+            </div>
+            <div id="meio-info">
+                <div class="vez" style="text-align: center;">
+                    <p class="msg-usuario texto"></p>
+                    <br>
+                    <p class="texto" id="texto">Espere...</p>
+                    
+                </div>
+    
+
+                <div class="botao-golpe-fraco">
+                    <button class="golpe-fraco" onclick="golpe_f()" style="display: none;">Golpe Fraco</button>
+                </div>
+
+                <div class="abandonar-partida">
+                    <button class="abandonar-btn" onclick="abandonar_partida()">Abandonar Partida</button>
+                </div>
+            </div>
+            <div class="inimigo">
+                <p class="level-inimigo">Level 1</p>
+                <img src="../imgs/personagens/level-1.png" alt="" class="img-inimigo-local">
+                <p class="texto-vida">HP: <span id="span-vida-inimigo">100</span></p>
+             
+            </div>
+        </div>
+
+    <script src="../scripts/ataque.js" type="module"></script>
+    <script src="../scripts/index.js" type="module">
+    
+    </script>
+  
+    
+</body>
+</html>
