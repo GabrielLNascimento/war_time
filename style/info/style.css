@@ -1,0 +1,26 @@
+body {
+    font-family: 'Pixelify Sans';
+}
+
+.info {
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.info h1 {
+    background-color: #452a26;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+.info-class {
+    border: 1px solid red;
+    color: #301e1b;
+    font-weight: 900;
+    padding-left: 1em;
+}
