@@ -4,6 +4,7 @@
     width: 90%;
     height: auto;
     margin-top: 0;
+    font-family: 'Pixelify Sans';
 }
 
 .main-home {
@@ -139,6 +140,7 @@
     background-color: white;
     outline: 0;
     border: 0;
+    font-family: 'Pixelify Sans';
 }
 
 .btns-container .botao-atacar:hover {

@@ -76,6 +76,7 @@ div.atacar_container {
     font-size: 1.3em;
     outline: 0;
     border: 0;
+    font-family: 'Pixelify Sans';
 }
 
 .golpe-fraco:hover, .abandonar-btn:hover {

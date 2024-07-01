@@ -21,6 +21,7 @@ div.form-newgame {
     width: 85%;
     padding: 0.5em 1em;
     outline: 0;
+    font-family: 'Pixelify Sans';
 }
 
 .name-pers label {
@@ -35,7 +36,7 @@ div.form-newgame {
 }
 
 .classe-pers {
-    
+    font-family: 'Pixelify Sans';
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -87,6 +88,7 @@ input:checked + label{
 .btn-enviar {
     padding: 0.2em 0.8em;
     font-size: 1.1em;
+    font-family: 'Pixelify Sans';
 }
 
 .btn-enviar:hover {
