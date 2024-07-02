@@ -11,6 +11,10 @@ let quem_joga = true
 let first_atack = 0
 let vitoria = false
 
+let moedas = parseFloat(document.getElementById('span-quant-coins').textContent)
+let caixa_moedas = document.getElementById('span-quant-coins')
+
+
 
 function atacar_inicio() {
     const caixa = document.querySelector('.atacar_container')
@@ -25,6 +29,8 @@ function atacar_inicio() {
     vida_inimigo_hp = 100
     msg_usuario.innerHTML = ''
     vida_inimigo_atual = 0
+
+    
   
     
     if (Personagem[1] == 'guerreiro') {
@@ -73,23 +79,115 @@ function golpe_fraco_btn() {
 
         
         const dano_ataque = roletar()
-        if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0)) {
-            span_vida.innerHTML -= 10
-            vida_inimigo_atual += 10
-            
-            msg_usuario.innerHTML = 'Voce acertou 10 de dano'
-        } else {
-            msg_usuario.innerHTML = 'Voce errou o ataque'
-            inimigo()
-        }
         
+        if (Personagem[2] == 'sorte') {
+            switch (Personagem[1]) {
+                case 'guerreiro': 
+                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0) || (dano_ataque%5 == 0)) {
+                        span_vida.innerHTML -= 15
+                        vida_inimigo_atual += 15
+                        
+                        msg_usuario.innerHTML = 'Voce acertou 15 de dano'
+                    } else {
+                        msg_usuario.innerHTML = 'Voce errou o ataque'
+                        inimigo()
+                    } 
+    
+                    break
+                
+    
+                case 'arqueiro':
+                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0) || (dano_ataque%5 == 0)) {
+                        span_vida.innerHTML -= 10
+                        vida_inimigo_atual += 10
+                        
+                        msg_usuario.innerHTML = 'Voce acertou 10 de dano'
+                    } else {
+                        msg_usuario.innerHTML = 'Voce errou o ataque'
+                        inimigo()
+                    }
+    
+                    break
+    
+                case 'lenhador':
+                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0)) {
+                        span_vida.innerHTML -= 20
+                        vida_inimigo_atual += 20
+                        
+                        msg_usuario.innerHTML = 'Voce acertou 20 de dano'
+                    } else {
+                        msg_usuario.innerHTML = 'Voce errou o ataque'
+                        inimigo()
+                    }
+    
+                    break
+    
+                default:
+                    console.log('Personagem não reconhecido')
+            }
+        } else {
+            switch (Personagem[1]) {
+                case 'guerreiro': 
+                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0)) {
+                        span_vida.innerHTML -= 15
+                        vida_inimigo_atual += 15
+                        
+                        msg_usuario.innerHTML = 'Voce acertou 15 de dano'
+                    } else {
+                        msg_usuario.innerHTML = 'Voce errou o ataque'
+                        inimigo()
+                    } 
+    
+                    break
+                
+    
+                case 'arqueiro':
+                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0) || (dano_ataque%5 == 0)) {
+                        span_vida.innerHTML -= 10
+                        vida_inimigo_atual += 10
+                        
+                        msg_usuario.innerHTML = 'Voce acertou 10 de dano'
+                    } else {
+                        msg_usuario.innerHTML = 'Voce errou o ataque'
+                        inimigo()
+                    }
+    
+                    break
+    
+                case 'lenhador':
+                    if ((dano_ataque%2 == 0)) {
+                        span_vida.innerHTML -= 20
+                        vida_inimigo_atual += 20
+                        
+                        msg_usuario.innerHTML = 'Voce acertou 20 de dano'
+                    } else {
+                        msg_usuario.innerHTML = 'Voce errou o ataque'
+                        inimigo()
+                    }
+    
+                    break
+    
+                default:
+                    console.log('Personagem não reconhecido')
+            }
+        }   
     } 
 
     if (parseFloat(span_vida.textContent) <= 0) {
         msg_usuario.innerHTML = 'Você venceu'
+
         texto_acima.innerHTML = ' '
         golpe_fraco.style.display = 'none'
         vitoria = true
+        const moedas_ganhas = gerar_moedas()
+        moedas += moedas_ganhas
+        caixa_moedas.textContent = moedas;
+        msg_usuario.innerHTML += `<br>Ganhou: ${moedas_ganhas} moedas`
+        setTimeout(() => {
+            trocar_tela('.atacar_container', '.container_home')
+
+        }, 3000)
+        
     }
    
 }
@@ -100,18 +198,110 @@ function inimigo() {
     setTimeout(() => {
     
         const dano_hero = roletar()
-        if ((dano_hero%2 == 0) || (dano_hero%3 == 0)) {
-            msg_usuario.innerHTML = 'Inimigo errou o ataque'
-            jogador()
-           
-        } else {
-            msg_usuario.innerHTML = 'Inimigo acertou o ataque'
-            let tira_cora = tirar_coracao(caixa_coracoes)
-            if (tira_cora == true) {
-                jogador()
+
+        
+        if (Personagem[2] == 'sorte') {
+            switch (Personagem[1]) {
+                case 'guerreiro':
+                    if ((dano_hero%2 == 0) || (dano_hero%3 == 0)) {
+                        msg_usuario.innerHTML = 'Inimigo errou o ataque'
+                        jogador()
+                       
+                    } else {
+                        msg_usuario.innerHTML = 'Inimigo acertou o ataque'
+                        let tira_cora = tirar_coracao(caixa_coracoes)
+                        if (tira_cora == true) {
+                            jogador()
+                        }
+                        
+                    } 
+    
+                    break
+    
+                case 'arqueiro':
+                    if ((dano_hero%2 == 0) || (dano_hero%3 == 0) || (dano_hero%5 == 0)) {
+                        msg_usuario.innerHTML = 'Inimigo errou o ataque'
+                        jogador()
+                       
+                    } else {
+                        msg_usuario.innerHTML = 'Inimigo acertou o ataque'
+                        let tira_cora = tirar_coracao(caixa_coracoes)
+                        if (tira_cora == true) {
+                            jogador()
+                        }
+                        
+                    } 
+    
+                    break
+    
+                case 'lenhador':
+                    if ((dano_hero%2 == 0) || (dano_hero%3 == 0)) {
+                        msg_usuario.innerHTML = 'Inimigo errou o ataque'
+                        jogador()
+                       
+                    } else {
+                        msg_usuario.innerHTML = 'Inimigo acertou o ataque'
+                        let tira_cora = tirar_coracao(caixa_coracoes)
+                        if (tira_cora == true) {
+                            jogador()
+                        }
+                        
+                    } 
+    
+                    break
             }
-            
+        } else {
+            switch (Personagem[1]) {
+                case 'guerreiro':
+                    if ((dano_hero%2 == 0)) {
+                        msg_usuario.innerHTML = 'Inimigo errou o ataque'
+                        jogador()
+                       
+                    } else {
+                        msg_usuario.innerHTML = 'Inimigo acertou o ataque'
+                        let tira_cora = tirar_coracao(caixa_coracoes)
+                        if (tira_cora == true) {
+                            jogador()
+                        }
+                        
+                    } 
+    
+                    break
+    
+                case 'arqueiro':
+                    if ((dano_hero%2 == 0) || (dano_hero%3 == 0)) {
+                        msg_usuario.innerHTML = 'Inimigo errou o ataque'
+                        jogador()
+                       
+                    } else {
+                        msg_usuario.innerHTML = 'Inimigo acertou o ataque'
+                        let tira_cora = tirar_coracao(caixa_coracoes)
+                        if (tira_cora == true) {
+                            jogador()
+                        }
+                        
+                    } 
+    
+                    break
+    
+                case 'lenhador':
+                    if ((dano_hero%4 == 0) || (dano_hero%3 == 0)) {
+                        msg_usuario.innerHTML = 'Inimigo errou o ataque'
+                        jogador()
+                       
+                    } else {
+                        msg_usuario.innerHTML = 'Inimigo acertou o ataque'
+                        let tira_cora = tirar_coracao(caixa_coracoes)
+                        if (tira_cora == true) {
+                            jogador()
+                        }
+                        
+                    } 
+    
+                    break
+            } 
         }
+        
         
 
     }, 2000)
@@ -172,6 +362,7 @@ function tirar_coracao(caixa_coracoes) {
     if (coracoes_verificados == 0) {
         golpe_fraco.style.display = 'none'
         msg_usuario.innerHTML = 'Você perdeu!'
+        msg_usuario.innerHTML += `<br>Ganhou: ${moedas} moedas`
         return false
         // colocar um modo de aparecer na tela que morreu!
         // tirar o botão de atacar e abandonar partida
@@ -196,6 +387,13 @@ function verificar_coracoes() {
     }
 
     return soma
+}
+
+function gerar_moedas() {
+    let max = 15
+    let min = 5
+    let numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+    return numeroAleatorio
 }
 
 

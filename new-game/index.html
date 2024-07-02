@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="font-family: 'Pixelify Sans';">
     <div class="container form-newgame">
         
             <div class="name-pers">
@@ -80,7 +80,7 @@
                     <div class="coins">
                         <img src="../imgs/icones/coins.png" alt="" class="coins-img">
                         <div id="quantidade-coins">
-                            0
+                            <span id="span-quant-coins">0</span>
                             <!-- QUantidade de moedas-->
                         </div>
                         <!-- Adicionado as moedas -->
@@ -167,7 +167,7 @@
                 </div>
     
 
-                <div class="botao-golpe-fraco" style="height: 300px;">
+                <div class="botao-golpe-fraco" style="height: 100px;">
                     <button class="golpe-fraco" onclick="golpe_f()" style="display: none;">Golpe Fraco</button>
                 </div>
 

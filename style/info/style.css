@@ -4,7 +4,7 @@ body {
 
 .info {
     padding: 1em;
-
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 1.5em;
@@ -19,8 +19,23 @@ body {
 }
 
 .info-class {
-    border: 1px solid red;
+    
     color: #301e1b;
     font-weight: 900;
     padding-left: 1em;
+}
+
+.info-class h2 {
+    font-size: 1.6em;
+}
+
+.info-content {
+    margin: 2em 0;
+    background-color: #452a26;
+   
+    color: white;
+    padding: 2em 1em;
+    width: fit-content;
+    display: flex;
+    gap: 1.5em;
 }
