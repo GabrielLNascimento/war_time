@@ -1,6 +1,7 @@
 import { jogar } from "./ataque.js";
 import { abandonar } from "./ataque.js"
 import { golpe_fraco_btn } from "./ataque.js";
+import { comprando } from "./loja.js"
 
 
 
@@ -103,6 +104,18 @@ function golpe_f() {
     golpe_fraco_btn()
 }
 
+function loja() {
+    trocar_tela('.container_home', '.loja_container')
+}
+
+function voltar() {
+    trocar_tela('.loja_container', '.container_home')
+}
+
+
+function comprar() {
+    comprando()
+}
 
 window.adicionar = adicionar;
 window.trocar1 = trocar1;
@@ -110,5 +123,8 @@ window.trocar2 = trocar2;
 window.atacar = atacar;
 window.abandonar_partida = abandonar_partida;
 window.golpe_f = golpe_f
+window.comprar = comprar
+window.loja = loja
+window.voltar = voltar
 
-export { Personagem, trocar_tela, caixa_coracoes };
+export { Personagem, trocar_tela, caixa_coracoes, comprar };

@@ -10,7 +10,7 @@ let msg_usuario = document.querySelector('.msg-usuario')
 let quem_joga = true
 let first_atack = 0
 let vitoria = false
-
+let jogadas = 0
 let moedas = parseFloat(document.getElementById('span-quant-coins').textContent)
 let caixa_moedas = document.getElementById('span-quant-coins')
 
@@ -29,6 +29,7 @@ function atacar_inicio() {
     vida_inimigo_hp = 100
     msg_usuario.innerHTML = ''
     vida_inimigo_atual = 0
+    jogadas = 0
 
     
   
@@ -67,57 +68,60 @@ function jogar() {
     }
 }
 
-
 function jogador() {
     golpe_fraco.style.display = 'block'
     texto_acima.innerHTML = 'Sua vez de Jogar'
 }
 
 function golpe_fraco_btn() {
-    
+    golpe_fraco.style.display = 'none'
+
     if(vida_inimigo_atual != 100) {
 
         
-        const dano_ataque = roletar()
-        
+        let dano_ataque = roletar()
+
+        if (jogadas%2 == 0) {
+            dano_ataque = 0
+        }
+
         if (Personagem[2] == 'sorte') {
             switch (Personagem[1]) {
                 case 'guerreiro': 
-                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0) || (dano_ataque%5 == 0)) {
+                    if (dano_ataque < 60) {
                         span_vida.innerHTML -= 15
                         vida_inimigo_atual += 15
                         
                         msg_usuario.innerHTML = 'Voce acertou 15 de dano'
                     } else {
                         msg_usuario.innerHTML = 'Voce errou o ataque'
-                        inimigo()
+                        
                     } 
     
                     break
                 
-    
                 case 'arqueiro':
-                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0) || (dano_ataque%5 == 0)) {
+                    if (dano_ataque < 70) {
                         span_vida.innerHTML -= 10
                         vida_inimigo_atual += 10
                         
                         msg_usuario.innerHTML = 'Voce acertou 10 de dano'
                     } else {
                         msg_usuario.innerHTML = 'Voce errou o ataque'
-                        inimigo()
+                        
                     }
     
                     break
     
                 case 'lenhador':
-                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0)) {
+                    if (dano_ataque < 50) {
                         span_vida.innerHTML -= 20
                         vida_inimigo_atual += 20
                         
                         msg_usuario.innerHTML = 'Voce acertou 20 de dano'
                     } else {
                         msg_usuario.innerHTML = 'Voce errou o ataque'
-                        inimigo()
+                        
                     }
     
                     break
@@ -128,41 +132,41 @@ function golpe_fraco_btn() {
         } else {
             switch (Personagem[1]) {
                 case 'guerreiro': 
-                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0)) {
+                    if (dano_ataque < 50) {
                         span_vida.innerHTML -= 15
                         vida_inimigo_atual += 15
                         
                         msg_usuario.innerHTML = 'Voce acertou 15 de dano'
                     } else {
                         msg_usuario.innerHTML = 'Voce errou o ataque'
-                        inimigo()
+                        
                     } 
     
                     break
                 
     
                 case 'arqueiro':
-                    if ((dano_ataque%2 == 0) || (dano_ataque%3 == 0) || (dano_ataque%5 == 0)) {
+                    if (dano_ataque < 60) {
                         span_vida.innerHTML -= 10
                         vida_inimigo_atual += 10
                         
                         msg_usuario.innerHTML = 'Voce acertou 10 de dano'
                     } else {
                         msg_usuario.innerHTML = 'Voce errou o ataque'
-                        inimigo()
+                        
                     }
     
                     break
     
                 case 'lenhador':
-                    if ((dano_ataque%2 == 0)) {
+                    if (dano_ataque < 40) {
                         span_vida.innerHTML -= 20
                         vida_inimigo_atual += 20
                         
                         msg_usuario.innerHTML = 'Voce acertou 20 de dano'
                     } else {
                         msg_usuario.innerHTML = 'Voce errou o ataque'
-                        inimigo()
+                        
                     }
     
                     break
@@ -170,9 +174,12 @@ function golpe_fraco_btn() {
                 default:
                     console.log('Personagem não reconhecido')
             }
-        }   
+        } 
+        
+        jogadas += 1
     } 
 
+    
     if (parseFloat(span_vida.textContent) <= 0) {
         msg_usuario.innerHTML = 'Você venceu'
 
@@ -188,22 +195,29 @@ function golpe_fraco_btn() {
 
         }, 3000)
         
+    } else {
+        inimigo()
     }
    
 }
 
 function inimigo() {
-    golpe_fraco.style.display = 'none'
     texto_acima.innerHTML = 'Vez do inimigo'
     setTimeout(() => {
     
-        const dano_hero = roletar()
+        let dano_hero = roletar()
+        
+        if(jogadas%2 == 0) {
+            dano_hero = 0
+        } else if (jogadas%3 == 0) {
+            dano_hero == 0
+        }
 
         
         if (Personagem[2] == 'sorte') {
             switch (Personagem[1]) {
                 case 'guerreiro':
-                    if ((dano_hero%2 == 0) || (dano_hero%3 == 0)) {
+                    if (dano_hero < 60) {
                         msg_usuario.innerHTML = 'Inimigo errou o ataque'
                         jogador()
                        
@@ -219,7 +233,7 @@ function inimigo() {
                     break
     
                 case 'arqueiro':
-                    if ((dano_hero%2 == 0) || (dano_hero%3 == 0) || (dano_hero%5 == 0)) {
+                    if (dano_hero < 70) {
                         msg_usuario.innerHTML = 'Inimigo errou o ataque'
                         jogador()
                        
@@ -235,7 +249,7 @@ function inimigo() {
                     break
     
                 case 'lenhador':
-                    if ((dano_hero%2 == 0) || (dano_hero%3 == 0)) {
+                    if (dano_hero < 50) {
                         msg_usuario.innerHTML = 'Inimigo errou o ataque'
                         jogador()
                        
@@ -253,7 +267,7 @@ function inimigo() {
         } else {
             switch (Personagem[1]) {
                 case 'guerreiro':
-                    if ((dano_hero%2 == 0)) {
+                    if (dano_hero < 50) {
                         msg_usuario.innerHTML = 'Inimigo errou o ataque'
                         jogador()
                        
@@ -269,7 +283,7 @@ function inimigo() {
                     break
     
                 case 'arqueiro':
-                    if ((dano_hero%2 == 0) || (dano_hero%3 == 0)) {
+                    if (dano_hero < 60) {
                         msg_usuario.innerHTML = 'Inimigo errou o ataque'
                         jogador()
                        
@@ -285,7 +299,7 @@ function inimigo() {
                     break
     
                 case 'lenhador':
-                    if ((dano_hero%4 == 0) || (dano_hero%3 == 0)) {
+                    if (dano_hero < 50) {
                         msg_usuario.innerHTML = 'Inimigo errou o ataque'
                         jogador()
                        
@@ -322,6 +336,7 @@ function roletar() {
     let max = 100
     let min = 0
     let numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+     
     return numeroAleatorio
 }
 
